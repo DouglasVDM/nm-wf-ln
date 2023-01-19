@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import { Fragment, useEffect, useState } from 'react';
 import './App.css';
 
+// components
+import InputDepartment from './components/InputDepartment';
+import ListDepartment from './components/ListDepartments';
+
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [departments, setDepartments] = useState([]);
+
+	const getDepartments = async () => {
+		try {
+			const response = await fetch(
+				'http://localhost:5001/departments'
+			);
+			const jsonData = await response.json();
+
+			setDepartments(jsonData);
+			console.log('jsonData', jsonData)
+			console.log('appJs departments', departments);
+		} catch (err) {
+			console.error(err.message);
+		}
+	};
+
+	useEffect(() => {
+		getDepartments();
+	}, []);
+
+
+	return (
+		<Fragment>
+			<div className="container">
+				<InputDepartment departments={departments} setDepartments={setDepartments} />
+				<ListDepartment departments={departments} setDepartments={setDepartments} />
+			</div>
+		</Fragment>
+	);
 }
 
 export default App;
