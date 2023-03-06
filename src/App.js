@@ -5,6 +5,15 @@ import './App.css';
 import InputDepartment from './components/InputDepartment';
 import ListDepartment from './components/ListDepartments';
 
+// NODE_ENV = 'development'
+// NODE_ENV = 'production
+
+// if we are in production baseURL = /departments
+// else baseURL = http://localhost:5001/departments
+
+// const baseURL = 'http://localhost:5001/departments'
+
+const baseURL = process.env.NODE_ENV==='production' ? "/departments" : "http://localhost:5001/departments"
 
 function App() {
 	const [departments, setDepartments] = useState([]);
@@ -12,7 +21,7 @@ function App() {
 	const getDepartments = async () => {
 		try {
 			const response = await fetch(
-				'http://localhost:5001/departments'
+				baseURL
 			);
 			const jsonData = await response.json();
 
