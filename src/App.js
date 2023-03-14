@@ -13,7 +13,7 @@ import ListDepartment from './components/ListDepartments';
 
 // const baseURL = 'http://localhost:5001/departments'
 
-const baseURL = process.env.NODE_ENV==='production' ? "/departments" : "http://localhost:5001/departments"
+const baseURL = "/departments"
 
 function App() {
 	const [departments, setDepartments] = useState([]);
