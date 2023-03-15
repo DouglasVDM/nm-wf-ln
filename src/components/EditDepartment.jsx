@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 
-const EditDepartment = ({ baseURL, department }) => {
+const EditDepartment = ({ baseURL, departments }) => {
     const [description, setDescription] = useState();
 
     // edit description function
@@ -9,7 +9,7 @@ const EditDepartment = ({ baseURL, department }) => {
         try {
             const body = { description };
             const response = await fetch(
-                `${baseURL}/${department.department_id}`,
+                `${baseURL}/${departments.department_id}`,
                 {
                     method: 'PUT',
                     headers: {
@@ -32,18 +32,18 @@ const EditDepartment = ({ baseURL, department }) => {
                 type="button"
                 className="btn btn-warning"
                 data-bs-toggle="modal"
-                data-bs-target={`#id${department.department_id}`}
+                data-bs-target={`#id${departments.department_id}`}
             >
                 Edit
             </button>
             <div
                 className="modal fade"
-                id={`id${department.department_id}`}
+                id={`id${departments.department_id}`}
                 tabIndex="-1"
                 aria-labelledby="exampleModalLabel"
                 aria-hidden="true"
                 onClick={() =>
-                    setDescription(department.description)
+                    setDescription(departments.description)
                 }
             >
                 <div className="modal-dialog">
@@ -62,7 +62,7 @@ const EditDepartment = ({ baseURL, department }) => {
                                 aria-label="Close"
                                 onClick={() =>
                                     setDescription(
-                                        department.description
+                                        departments.description
                                     )
                                 }
                             ></button>
@@ -96,7 +96,7 @@ const EditDepartment = ({ baseURL, department }) => {
                                 data-bs-dismiss="modal"
                                 onClick={() =>
                                     setDescription(
-                                        department.description
+                                        departments.description
                                     )
                                 }
                             >
