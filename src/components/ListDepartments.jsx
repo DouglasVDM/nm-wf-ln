@@ -3,13 +3,13 @@ import React, { Fragment } from 'react';
 // components
 import EditDepartment from './EditDepartment';
 
-const ListDepartments = ({ departments, setDepartments, }) => {
+const ListDepartments = ({ baseURL, departments, setDepartments, }) => {
     // console.log('listDept departments', departments)
 
     const deleteDepartment = async (id) => {
         try {
             const deleteDepartment = await fetch(
-                `http://localhost:5001/departments/${id}`,
+                `${baseURL}/${id}`,
                 {
                     method: 'DELETE',
                 }

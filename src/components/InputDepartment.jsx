@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 
-const InputDepartment = () => {
+const InputDepartment = ({ baseURL }) => {
     const [description, setDescription] =
         useState('');
 
@@ -10,7 +10,7 @@ const InputDepartment = () => {
         try {
             const body = { description };
             const response = await fetch(
-                'http://localhost:5001/departments',
+                `${baseURL}`,
                 {
                     method: 'POST',
                     headers: {

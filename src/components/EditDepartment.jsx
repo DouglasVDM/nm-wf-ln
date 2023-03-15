@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 
-const EditDepartment = ({ department }) => {
+const EditDepartment = ({ baseURL, department }) => {
     const [description, setDescription] = useState();
 
     // edit description function
@@ -9,7 +9,7 @@ const EditDepartment = ({ department }) => {
         try {
             const body = { description };
             const response = await fetch(
-                `http://localhost:5001/departments/${department.department_id}`,
+                `${baseURL}/${department.department_id}`,
                 {
                     method: 'PUT',
                     headers: {

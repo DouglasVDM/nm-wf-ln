@@ -41,8 +41,8 @@ function App() {
 	return (
 		<Fragment>
 			<div className="container">
-				<InputDepartment departments={departments} setDepartments={setDepartments} />
-				<ListDepartment departments={departments} setDepartments={setDepartments} />
+				<InputDepartment baseURL={baseURL} departments={departments} setDepartments={setDepartments} />
+				<ListDepartment baseURL={baseURL} departments={departments} setDepartments={setDepartments} />
 			</div>
 		</Fragment>
 	);
