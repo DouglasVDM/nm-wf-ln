@@ -47,7 +47,7 @@ const ListDepartments = ({ baseURL, departments, setDepartments, }) => {
                             <td>{department.description}</td>
                             <td>
                                 <EditDepartment
-                                    department={department}
+                                    department={department} baseURL={baseURL}
                                 />
                             </td>
                             <td>
